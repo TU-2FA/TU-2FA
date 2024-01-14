@@ -1,6 +1,3 @@
-
-
-
 # TU Dresden 2FA Script
 
 **Description:**
