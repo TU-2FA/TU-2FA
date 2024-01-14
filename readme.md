@@ -24,7 +24,7 @@ This Tampermonkey userscript automatically fills in the 2FA code for the TU Dres
     ![image showing how to paste the scipt](https://raw.githubusercontent.com/TU-2FA/TU-2FA/main/images/paste_code.png)
 
 4. **Insert Secret Key:**
-    - Locate line 36 in the script.
+    - Locate line 43 in the script.
     - Replace the placeholder with your secret key.
     ![image showing how to edit and save the script](https://raw.githubusercontent.com/TU-2FA/TU-2FA/main/images/save.png)
 
