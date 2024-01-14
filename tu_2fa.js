@@ -8,7 +8,7 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
 
     const xpathExpression = "/html/body/div[2]/main/section/form/table/tbody/tr[3]/td/div/button[@name='_eventId_proceed']";
@@ -20,17 +20,16 @@
 
         existingButton.parentNode.insertBefore(newButton, existingButton.nextSibling);
 
-        newButton.addEventListener('click', function(event) {
+        newButton.addEventListener('click', function (event) {
             event.preventDefault();
             if (window.location.href.includes("https://idp.tu-dresden.de/idp/profile/SAML2/Redirect/SSO?execution=")) {
                 const optIndicesElem = document.evaluate("/html/body/div[2]/main/section/form/table/tbody/tr[2]/td[1]/legend/nobr", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
-                console.log(optIndicesElem.innerText);
                 if (optIndicesElem) {
                     const regex = /Position\s+(\d+)\s*&\s*(\d+)/;
                     let matches = optIndicesElem.innerText.match(regex);
 
-                    if (matches == null){
+                    if (matches == null) {
                         const regex2 = /position (\d+) & (\d+)/;
                         matches = optIndicesElem.innerText.match(regex2);
                         console.log("TU-2FA: found matches for alternative expression");
@@ -39,8 +38,8 @@
                     if (matches) {
                         const digit_1 = matches[1];
                         const digit_2 = matches[2];
-						
-			const str = "------your-key-here------";
+
+                        const str = "------your-key-here------";
 
                         const otp = String(str[parseInt(digit_1) - 1]) + String(str[parseInt(digit_2) - 1]);
 
