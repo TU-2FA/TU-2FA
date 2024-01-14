@@ -40,7 +40,7 @@
                         const digit_1 = matches[1];
                         const digit_2 = matches[2];
 						
-						const str = "------your-key-here------";
+			const str = "------your-key-here------";
 
                         const otp = String(str[parseInt(digit_1) - 1]) + String(str[parseInt(digit_2) - 1]);
 
