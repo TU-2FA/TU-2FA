@@ -16,6 +16,7 @@ This Tampermonkey userscript automatically fills in the 2FA code for the TU Dres
 2. **Create a New Userscript:**
     - Click on the Tampermonkey icon in your browser.
     - Select "Create a new script"
+    
     ![Image showing how to create a new script](https://raw.githubusercontent.com/TU-2FA/TU-2FA/main/images/create_script.png)
 
 3. **Paste the Script Code:**
