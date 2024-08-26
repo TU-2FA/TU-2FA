@@ -11,28 +11,35 @@
 (function () {
     'use strict';
 
-    const xpathExpression = "/html/body/div[2]/main/section/form/table/tbody/tr[3]/td/div/button[@name='_eventId_proceed']";
+    const xpathExpression = "/html/body/main/section[2]/form/div[3]/div[1]/button";
     const existingButton = document.evaluate(xpathExpression, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
+
     if (existingButton) {
+        existingButton.style.marginRight = "30px";
+        existingButton.style.paddingLeft = "10px";
+        existingButton.style.paddingRight = "10px";
+
         const newButton = document.createElement('button');
         newButton.textContent = 'Fill 2FA Code';
+        newButton.style.paddingLeft = "10px";
+        newButton.style.paddingRight = "10px";
 
         existingButton.parentNode.insertBefore(newButton, existingButton.nextSibling);
 
         newButton.addEventListener('click', function (event) {
             event.preventDefault();
-            if (window.location.href.includes("https://idp.tu-dresden.de/idp/profile/SAML2/Redirect/SSO?execution=")) {
-                const optIndicesElem = document.evaluate("/html/body/div[2]/main/section/form/table/tbody/tr[2]/td[1]/legend/nobr", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+            if (window.location.href.includes("https://idp.tu-dresden.de/idp/profile/SAML2")) {
+                const optIndicesElem = document.evaluate("/html/body/main/section[2]/form/div[1]/div/legend/nobr", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
                 if (optIndicesElem) {
-                    const regex = /Position\s+(\d+)\s*&\s*(\d+)/;
+                    const regex = /Position\s+(\d+)\s*-\s*(\d+)/;
                     let matches = optIndicesElem.innerText.match(regex);
 
                     if (matches == null) {
                         const regex2 = /position (\d+) & (\d+)/;
                         matches = optIndicesElem.innerText.match(regex2);
-                        console.log("TU-2FA: found matches for alternative expression");
+                        console.log("TU-2FA: found matches for alternative expression: ", matches);
                     }
 
                     if (matches) {
