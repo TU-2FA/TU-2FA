@@ -33,7 +33,7 @@
                 const optIndicesElem = document.evaluate("/html/body/main/section[2]/form/div[1]/div/legend/nobr", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
                 if (optIndicesElem) {
-                    const regex = /Position\s+(\d+)\s*-\s*(\d+)/;
+                    const regex = /Position\s+(\d+)\s*&\s*(\d+)/;
                     let matches = optIndicesElem.innerText.match(regex);
 
                     if (matches == null) {
